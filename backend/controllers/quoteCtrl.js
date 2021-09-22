@@ -11,13 +11,36 @@ const quoteCtrl = {
   },
   createQuote: async (req, res) => {
     try {
-      const { service, admin, detailConcept, total } = req.body;
-
-      const newQuote = new Quotes({
+      const {
+        user,
+        type_project,
         service,
-        admin,
+        start_date,
+        end_date,
+        quote_admin,
+        days,
+        hours,
         detailConcept,
         total,
+        people_involves,
+        organization_size,
+        level_difficulty,
+      } = req.body;
+
+      const newQuote = new Quotes({
+        user,
+        type_project,
+        service,
+        start_date,
+        end_date,
+        quote_admin,
+        days,
+        hours,
+        detailConcept,
+        total,
+        people_involves,
+        organization_size,
+        level_difficulty,
       });
 
       await newQuote.save();
