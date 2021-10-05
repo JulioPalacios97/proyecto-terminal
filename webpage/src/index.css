@@ -1,0 +1,62 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+}
+body {
+  background: rgb(245, 245, 245);
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.section-servicios {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.section-quienes-somos {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.section-noticias {
+  margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.section-4 {
+  margin-bottom: 5%;
+  margin-top: 5%;
+}
+
+.spacer__m {
+  padding: 1.5rem 0;
+}
+
+.spacer__sm {
+  padding: 1rem 0;
+}
+
+/* import header css */
+@import url("./components/styles/header.css");
+
+/* import home css */
+@import url("./components/styles/home.css");
+
+/* import footer css */
+@import url("./components/styles/footer.css");
+
+/* import about us css */
+@import url("./components/styles/aboutus.css");
+
+/* import contact css */
+@import url("./components/styles/contact.css");
+
+/* import service css */
+@import url("./components/styles/service.css");
