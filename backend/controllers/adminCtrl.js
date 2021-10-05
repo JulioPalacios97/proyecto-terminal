@@ -30,16 +30,7 @@ const adminCtrl = {
       //save mongodb
       await newAdmin.save();
 
-      //the create jsonwebtoken to authentication
-      const accesstoken = createAccessToken({ id: newAdmin._id });
-      //const refreshtoken = createRefreshToken({ id: newAdmin._id });
-
-      /*res.cookie("refreshtoken", refreshtoken, {
-        httpOnly: true,
-        path: "/admin/refresh_token",
-      });*/
-
-      res.json({ accesstoken });
+      res.json({ msg: "El registro fue correcto" });
     } catch (error) {
       return res.status(500).json({ msg: err.message });
     }
@@ -58,45 +49,13 @@ const adminCtrl = {
 
       //if login success, create access tokan
       const accesstoken = createAccessToken({ id: admin._id });
-      //(const refreshtoken = createRefreshToken({ id: admin._id });
-
-      /*res.cookie("refreshtoken", refreshtoken, {
-        httpOnly: true,
-        path: "/admin/refresh_token",
-      });*/
 
       res.json({ accesstoken });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
-  /*logout: async (req, res) => {
-    try {
-      res.clearCookie("refreshtoken", { path: "/admin/refresh_token" });
-      return res.json({ msg: "Logged out" });
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },*/
-  /*refreshToken: (req, res) => {
-    try {
-      const rf_token = req.cookies.refreshtoken;
 
-      if (!rf_token)
-        return res.status(400).json({ msg: "Please Login or Register" });
-
-      jwt.verify(rf_token, process.env.REFRESH_TOKEN_SECRET, (err, admin) => {
-        if (err)
-          return res.status(400).json({ msg: "Please Login or Register" });
-
-        const accesstoken = createAccessToken({ id: admin.id });
-
-        res.json({ accesstoken });
-      });
-    } catch (err) {
-      return res.status(500).json({ msg: err.message });
-    }
-  },*/
   getAdmin: async (req, res) => {
     try {
       const token = req.header("Authorization");
@@ -117,11 +76,6 @@ const adminCtrl = {
           return res.send(true);
         }
       );
-
-      /*const admin = await Admins.findById(req.admin.id).select("-password");
-      if (!admin) return res.status(400).json({ msg: "Admin does not exist." });*/
-
-      //res.json(admin); //id of admin
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -131,9 +85,5 @@ const adminCtrl = {
 const createAccessToken = (admin) => {
   return jwt.sign(admin, process.env.ACCESS_TOKEN_SECRET, { expiresIn: "1d" });
 };
-
-/*const createRefreshToken = (admin) => {
-  return jwt.sign(admin, process.env.REFRESH_TOKEN_SECRET, { expiresIn: "7d" });
-};*/
 
 module.exports = adminCtrl;

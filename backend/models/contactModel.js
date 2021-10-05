@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const contactSchema = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       required: true,
       trim: true,
@@ -23,7 +23,7 @@ const contactSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    text: {
+    content: {
       type: String,
       required: true,
       trim: true,
