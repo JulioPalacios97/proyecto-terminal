@@ -5,12 +5,8 @@ import Loading from "../../layout/loading/Loading";
 import { useHistory, useParams } from "react-router-dom";
 
 const initialState = {
-  service_id: "",
   title: "",
-  //image,
-  category: "",
   content: "",
-  price: 0,
   _id: "",
 };
 
@@ -18,7 +14,7 @@ function CreateService() {
   const state = useContext(GlobalState);
 
   const [service, setService] = useState(initialState);
-  const [sections] = state.sectionsAPI.sections;
+
   const [image, setImage] = useState(false);
   const [loading, setLoading] = useState(false);
 
@@ -101,21 +97,24 @@ function CreateService() {
       if (!image) return alert("No a cargado una imagen");
 
       if (onEdit) {
-        await axios.put(
+        const res = await axios.put(
           `/api/services/${service._id}`,
           { ...service, image },
           {
             headers: { Authorization: token },
           }
         );
+        alert(res.data.msg);
       } else {
-        await axios.post(
+        const res = await axios.post(
           "/api/services",
           { ...service, image },
           {
             headers: { Authorization: token },
           }
         );
+
+        alert(res.data.msg);
       }
       setCallback(!callback);
       setImage(false);
@@ -158,18 +157,6 @@ function CreateService() {
 
       <form onSubmit={handleSubmit}>
         <div className="row">
-          <label htmlFor="service_id">servicio ID</label>
-          <input
-            type="text"
-            name="service_id"
-            id="service_id"
-            required
-            value={service.service_id}
-            onChange={handleChangeInput}
-            disabled={onEdit}
-          />
-        </div>
-        <div className="row">
           <label htmlFor="title">Titulo</label>
           <input
             type="text"
@@ -180,17 +167,7 @@ function CreateService() {
             onChange={handleChangeInput}
           />
         </div>
-        <div className="row">
-          <label htmlFor="price">Precio</label>
-          <input
-            type="text"
-            name="price"
-            id="price"
-            required
-            value={service.price}
-            onChange={handleChangeInput}
-          />
-        </div>
+
         <div className="row">
           <label htmlFor="content">Contenido</label>
           <textarea
@@ -202,21 +179,6 @@ function CreateService() {
             rows="7"
             onChange={handleChangeInput}
           />
-        </div>
-        <div className="row">
-          <label htmlFor="category">Categoria: </label>
-          <select
-            name="category"
-            value={service.category}
-            onChange={handleChangeInput}
-          >
-            <option value="">Porfavor selecciona una categoria</option>
-            {sections.map((section) => (
-              <option value={section.name} key={section._id}>
-                {section.name}
-              </option>
-            ))}
-          </select>
         </div>
         <button className="service_btn" type="submit">
           {onEdit ? "Editar" : "Crear"}

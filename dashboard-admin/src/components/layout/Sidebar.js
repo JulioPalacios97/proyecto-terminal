@@ -113,12 +113,7 @@ const Sidebar = ({ sidebarOpen, buttonSidebar, setLogin }) => {
           >
             <i className="fas">&#xf0c9;</i>
           </div>
-          {/*<div className="search">
-            <label>
-              <input type="text" placeholder="buscar..." />
-              <i className="fas fa-search"></i>
-            </label>
-  </div>*/}
+
           <div className="user">{token ? "Admin" : ""}</div>
         </div>
         <Pages />

@@ -6,7 +6,6 @@ import axios from "axios";
 
 const initialState = {
   username: "",
-  lastname: "",
   email: "",
   phone: "",
   service: "",
@@ -46,14 +45,14 @@ function Contact() {
       <section className="section_banner">
         <div>
           <div className="section_titulo">
-            <h1 className="text-white">contacto</h1>
+            <h1 className="text-white text-uppercase">Contacto</h1>
           </div>
         </div>
       </section>
 
       <div className="contenedor row">
         <div className="col-lg-12">
-          <span className="text-uppercase">¿tienes alguna dua?</span>
+          <span className="text-uppercase">¿tienes alguna duda?</span>
           <h1 className="text-uppercase">contacto</h1>
           <span className="text-aqua">campos requeridos marcados con *</span>
           <div className="spacer__sm"></div>
@@ -61,7 +60,7 @@ function Contact() {
         <div className="col-lg-7">
           <form onSubmit={handleSubmit}>
             <div className="form-row">
-              <div className="form-group col-md-6">
+              <div className="form-group col-md-12">
                 <label
                   htmlFor="username"
                   className="text-uppercase form-control-label"
@@ -75,23 +74,6 @@ function Contact() {
                   id="username"
                   onChange={handleChangeInput}
                   value={contact.username}
-                  required
-                />
-              </div>
-              <div className="form-group col-md-6">
-                <label
-                  htmlFor="lastname"
-                  className="text-uppercase form-control-label"
-                >
-                  apellido*
-                </label>
-                <input
-                  type="text"
-                  name="lastname"
-                  className="form-control"
-                  id="lastname"
-                  onChange={handleChangeInput}
-                  value={contact.lastname}
                   required
                 />
               </div>
@@ -134,16 +116,16 @@ function Contact() {
                 htmlFor="service"
                 className="text-uppercase form-control-label"
               >
-                servicio
+                línea de servicio*
               </label>
               <select
                 name="service"
-                className="form-control"
+                className="form-control text-uppercase"
                 value={contact.service}
                 onChange={handleChangeInput}
                 required
               >
-                <option>Porfavor selecciona un servicio</option>
+                <option>Porfavor selecciona una línea de servicio</option>
                 {services.map((service) => (
                   <option value={service.title} key={service._id}>
                     {service.title}
@@ -193,7 +175,7 @@ function Contact() {
           <div className="spacer__sm"></div>
           <div className="row contenedor text-white mt-0 text-center">
             <div className="col-md-4 mb-4">
-              <h5 className="text-white">facebook</h5>
+              <h5 className="text-white">Facebook</h5>
               <p className="mb-0">Julbe'en Consultores</p>
               <p className="font-weight-bold">
                 <Link
@@ -211,7 +193,7 @@ function Contact() {
               </p>
             </div>
             <div className="col-md-4 mb-4">
-              <h5 className="text-white">Linkeding</h5>
+              <h5 className="text-white">Linkedin</h5>
               <p className="mb-0">Julbe'en Consultores</p>
               <p className="font-weight-bold">
                 <Link
@@ -229,7 +211,7 @@ function Contact() {
               </p>
             </div>
             <div className="col-md-4 mb-4">
-              <h5 className="text-white">correo electronico</h5>
+              <h5 className="text-white">Correo Electronico</h5>
               <p className="mb-0">Julbe'en Consultores</p>
               <p className="font-weight-bold">
                 <Link
@@ -239,7 +221,10 @@ function Contact() {
                   target="_blank"
                   style={{ color: "white", textDecoration: "none" }}
                 >
-                  julbeenconsultores@gmail.com{" "}
+                  <i
+                    className="fas fa-envelope"
+                    style={{ fontSize: "20px", color: "white" }}
+                  ></i>
                 </Link>
               </p>
             </div>

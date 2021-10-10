@@ -19,7 +19,7 @@ function Services() {
       <section className="section_banner">
         <div>
           <div className="section_titulo">
-            <h1 className="text-white">Servicios</h1>
+            <h1 className="text-white text-uppercase">Servicios</h1>
           </div>
         </div>
       </section>

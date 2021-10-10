@@ -8,8 +8,9 @@ function CreateQuote() {
   const [clients] = state.clientsAPI.clients;
   const [services] = state.servicesAPI.services;
   const [data, setData] = useState({
+    place_date: "",
     client_name: "",
-    client_lastname: "",
+    quote_number: "",
     service: "",
     start_date: "",
     end_date: "",
@@ -53,10 +54,10 @@ function CreateQuote() {
 
     const num = total - parseInt(price);
 
-    const newArr = [...detailConcept];
-    newArr.splice(index, 1);
+    const concept = [...detailConcept];
+    concept.splice(index, 1);
 
-    setDetailConcept(newArr);
+    setDetailConcept(concept);
     setTotal(num);
   };
 
@@ -66,8 +67,9 @@ function CreateQuote() {
       const dataSave = {
         detailConcept: detailConcept,
         total: total,
+        place_date: data.place_date,
         client_name: data.client_name,
-        client_lastname: data.client_lastname,
+        quote_number: data.quote_number,
         service: data.service,
         start_date: data.start_date,
         end_date: data.end_date,
@@ -98,6 +100,16 @@ function CreateQuote() {
       <form onSubmit={guardarDatos}>
         <div className="quote_data">
           <div className="col-6">
+            <label htmlFor="place_date">Lugar y Fecha</label>
+            <input
+              type="text"
+              name="place_date"
+              value={data.place_date}
+              onChange={onChangeInput}
+              required
+            />
+          </div>
+          <div className="col-6">
             <label htmlFor="client_name">Nombre del Cliente</label>
             <select
               name="client_name"
@@ -113,19 +125,14 @@ function CreateQuote() {
             </select>
           </div>
           <div className="col-6">
-            <label htmlFor="client_lastname">Apellido del Cliente</label>
-            <select
-              name="client_lastname"
-              value={data.client_lastname}
+            <label htmlFor="quote_number">Numero de cotización</label>
+            <input
+              type="text"
+              name="quote_number"
+              value={data.quote_number}
               onChange={onChangeInput}
-            >
-              <option value="">Selecciona el apellido del cliente</option>
-              {clients.map((client) => (
-                <option value={client.lastname} key={client._id}>
-                  {client.lastname}
-                </option>
-              ))}
-            </select>
+              required
+            />
           </div>
           <div className="col-6">
             <label htmlFor="quote_admin">Administrador</label>
@@ -219,6 +226,7 @@ function CreateQuote() {
               required
             />
           </div>
+          <div className="col-6"></div>
         </div>
         {/*Table concept*/}
         <div className="table_concept">

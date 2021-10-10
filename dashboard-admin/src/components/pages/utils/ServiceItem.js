@@ -29,10 +29,14 @@ function ServiceItem({ service, callback, setCallback, token }) {
     <>
       <tbody>
         <tr>
-          <td>{service.service_id}</td>
-          <td>{service.category}</td>
+          <td>
+            <img
+              src={service.image.url}
+              alt={service.image.url}
+              style={{ width: "50px", height: "50px" }}
+            />
+          </td>
           <td style={{ textTransform: "uppercase" }}>{service.title}</td>
-          <td>${service.price}</td>
           <td>
             <button className="edit">
               <Link

@@ -1,4 +1,4 @@
-const Services = require("../models/serviceModel");
+const News = require("../models/newsModel");
 
 class APIfeatures {
   constructor(query, queryString) {
@@ -27,15 +27,15 @@ class APIfeatures {
   }
 
   /*sorting() {
-    if (this.queryString.sort) {
-      const sortBy = this.queryString.sort.split(",").join(" ");
-      this.query = this.query.sort(sortBy);
-    } else {
-      this.query = this.query.sort("-createdAt");
-    }
-
-    return this;
-  }*/
+      if (this.queryString.sort) {
+        const sortBy = this.queryString.sort.split(",").join(" ");
+        this.query = this.query.sort(sortBy);
+      } else {
+        this.query = this.query.sort("-createdAt");
+      }
+  
+      return this;
+    }*/
 
   paginating() {
     const page = this.queryString.page * 1 || 1;
@@ -46,61 +46,60 @@ class APIfeatures {
   }
 }
 
-const serviceCtrl = {
-  getServices: async (req, res) => {
+const newsCtrl = {
+  getNews: async (req, res) => {
     try {
-      const features = new APIfeatures(Services.find(), req.query)
+      const features = new APIfeatures(News.find(), req.query)
         .filtering()
         .paginating();
 
-      const services = await features.query;
+      const news = await features.query;
 
       res.json({
         status: "success",
-        result: services.length,
-        services: services,
+        result: news.length,
+        news: news,
       });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
-  createService: async (req, res) => {
+  createNew: async (req, res) => {
     try {
       const { title, image, content } = req.body;
       if (!image)
         return res.status(400).json({ msg: "No a cargado una imagen" });
 
-      const service = await Services.findOne({ title });
-      if (service)
-        return res.status(400).json({ msg: "Este servicio ya existe" });
+      const news = await News.findOne({ title });
+      if (news) return res.status(400).json({ msg: "Esta noticia ya existe" });
 
-      const newService = new Services({
+      const newNews = new News({
         title: title.toLowerCase(),
         image,
         content,
       });
 
-      await newService.save();
-      res.json({ msg: "Servicio creado" });
+      await newNews.save();
+      res.json({ msg: "Noticia creada" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
-  deleteService: async (req, res) => {
+  deleteNew: async (req, res) => {
     try {
-      await Services.findByIdAndDelete(req.params.id);
-      res.json({ msg: "Servicio eliminado" });
+      await News.findByIdAndDelete(req.params.id);
+      res.json({ msg: "Noticia eliminada" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
-  updateService: async (req, res) => {
+  updateNew: async (req, res) => {
     try {
       const { title, image, content } = req.body;
       if (!image)
         return res.status(400).json({ msg: "No a cargado una imagen" });
 
-      await Services.findOneAndUpdate(
+      await News.findOneAndUpdate(
         { _id: req.params.id },
         {
           title: title.toLowerCase(),
@@ -108,12 +107,11 @@ const serviceCtrl = {
           content,
         }
       );
-
-      res.json({ msg: "Servicio actualizado" });
+      res.json({ msg: "Noticia actualizada" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
   },
 };
 
-module.exports = serviceCtrl;
+module.exports = newsCtrl;

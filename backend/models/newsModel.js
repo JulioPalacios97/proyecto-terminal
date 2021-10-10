@@ -1,8 +1,8 @@
 const mongoose = require("mongoose");
 
-const consultantSchema = new mongoose.Schema(
+const newSchema = new mongoose.Schema(
   {
-    name: {
+    title: {
       type: String,
       required: true,
       trim: true,
@@ -11,7 +11,7 @@ const consultantSchema = new mongoose.Schema(
       type: Object,
       required: true,
     },
-    description: {
+    content: {
       type: String,
       required: true,
     },
@@ -21,4 +21,4 @@ const consultantSchema = new mongoose.Schema(
   }
 );
 
-module.exports = mongoose.model("Consultants", consultantSchema);
+module.exports = mongoose.model("News", newSchema);

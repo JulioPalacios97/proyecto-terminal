@@ -18,7 +18,7 @@ function Cotizaciones() {
   return (
     <div>
       <div className="details">
-        <div className="table-services">
+        <div className="table">
           <div className="cardHeader">
             <h2>Cotizaciones Actuales</h2>
             <div className="search">

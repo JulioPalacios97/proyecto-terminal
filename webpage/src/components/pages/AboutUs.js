@@ -21,7 +21,7 @@ function AboutUs() {
       <section className="section_banner">
         <div>
           <div className="section_titulo">
-            <h1 className="text-white">Quienes Somos</h1>
+            <h1 className="text-white text-uppercase">¿Quiénes Somos?</h1>
           </div>
         </div>
       </section>

@@ -18,7 +18,7 @@ const Servicios = () => {
   return (
     <div>
       <div className="details">
-        <div className="table-services">
+        <div className="table">
           <div className="cardHeader">
             <h2>Servicios Actuales</h2>
             <div className="search">
@@ -39,10 +39,8 @@ const Servicios = () => {
           <table>
             <thead>
               <tr>
-                <td>folio</td>
-                <td>categoria</td>
+                <td>imagen</td>
                 <td>servicio</td>
-                <td>precio</td>
                 <td>opciones</td>
               </tr>
             </thead>

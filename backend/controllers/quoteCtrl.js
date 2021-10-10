@@ -66,8 +66,9 @@ const quoteCtrl = {
   createQuote: async (req, res) => {
     try {
       const {
+        place_date,
         client_name,
-        client_lastname,
+        quote_number,
         service,
         start_date,
         end_date,
@@ -81,8 +82,9 @@ const quoteCtrl = {
       } = req.body;
 
       const newQuote = new Quotes({
+        place_date,
         client_name,
-        client_lastname,
+        quote_number,
         service,
         start_date,
         end_date,

@@ -19,7 +19,6 @@ function ClientItem({ client, callback, setCallback, token }) {
       <tbody>
         <tr>
           <td>{client.username}</td>
-          <td>{client.lastname}</td>
           <td>{client.service}</td>
           <td>{client.email}</td>
           <td>{client.phone}</td>

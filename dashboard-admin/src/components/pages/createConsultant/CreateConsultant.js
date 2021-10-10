@@ -5,7 +5,6 @@ import Loading from "../../layout/loading/Loading";
 import { useHistory, useParams } from "react-router-dom";
 
 const initialState = {
-  consultant_id: "",
   name: "",
   //image,
   description: "",
@@ -98,21 +97,23 @@ function CreateConsultant() {
       if (!image) return alert("No a cargado una imagen");
 
       if (onEdit) {
-        await axios.put(
+        const res = await axios.put(
           `/api/consultants/${consultant._id}`,
           { ...consultant, image },
           {
             headers: { Authorization: token },
           }
         );
+        alert(res.data.msg);
       } else {
-        await axios.post(
+        const res = await axios.post(
           "/api/consultants",
           { ...consultant, image },
           {
             headers: { Authorization: token },
           }
         );
+        alert(res.data.msg);
       }
       setCallback(!callback);
       setImage(false);
@@ -153,18 +154,6 @@ function CreateConsultant() {
       </div>
 
       <form onSubmit={handleSubmit}>
-        <div className="row">
-          <label htmlFor="consultant_id">consultor ID</label>
-          <input
-            type="text"
-            name="consultant_id"
-            id="consultant_id"
-            required
-            value={consultant.consultant_id}
-            onChange={handleChangeInput}
-            disabled={onEdit}
-          />
-        </div>
         <div className="row">
           <label htmlFor="name">Nombre del consultor</label>
           <input

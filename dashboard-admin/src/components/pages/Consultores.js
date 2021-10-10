@@ -17,7 +17,7 @@ const Administradores = () => {
   return (
     <div>
       <div className="details">
-        <div className="table-services">
+        <div className="table">
           <div className="cardHeader">
             <h2>Consultores Actuales</h2>
             <div className="search">
@@ -38,7 +38,7 @@ const Administradores = () => {
           <table>
             <thead>
               <tr>
-                <td>folio</td>
+                <td>imagen</td>
                 <td>nombre</td>
                 <td>opciones</td>
               </tr>

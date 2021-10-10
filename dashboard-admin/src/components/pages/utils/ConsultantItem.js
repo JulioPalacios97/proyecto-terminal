@@ -30,7 +30,13 @@ function ConsultantItem({ consultant, callback, setCallback, token }) {
     <>
       <tbody>
         <tr>
-          <td>{consultant.consultant_id}</td>
+          <td>
+            <img
+              src={consultant.image.url}
+              alt={consultant.image.url}
+              style={{ width: "50px", height: "50px" }}
+            />
+          </td>
           <td style={{ textTransform: "uppercase" }}>{consultant.name}</td>
           <td>
             <button className="edit">

@@ -19,9 +19,9 @@ function Home() {
           <div className="site-content">
             <div className="d-flex justify-content-center">
               <div className="d-flex flex-column">
-                <h1 className="site-title">julbe'en</h1>
+                <h1 className="site-title">julbe'en consultores</h1>
                 <p className="site-desc">
-                  inspirar la evolución de las organizaciones
+                  inspiramos la evolución de las organizaciones
                 </p>
               </div>
             </div>
@@ -62,7 +62,7 @@ function Home() {
             <div className="row">
               <div className="col-md-3"></div>
               <div className="col-md-6 text-center">
-                <h1 className="heading-1">quienes somos</h1>
+                <h1 className="heading-1">¿quiénes somos?</h1>
                 <p className="paragraph-1">
                   Somos una empresa de consultores profesionales con experiencia
                   en diversos ámbitos y sectores, cuyo objetivo es generar valor

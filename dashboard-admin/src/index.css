@@ -18,11 +18,8 @@ body {
 /*style sidebar*/
 @import url("./components/styles/sidebar.css");
 
-/*style servicios*/
-@import url("./components/styles/servicios.css");
-
 /*style dashboard*/
-@import url("./components/styles/dashboard.css");
+@import url("./components/styles/table.css");
 
 /*style section*/
 @import url("./components/styles/section.css");

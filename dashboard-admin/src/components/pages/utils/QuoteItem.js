@@ -29,26 +29,51 @@ function QuoteItem({ quote, callback, setCallback, token }) {
 
   const pdfGenerate = () => {
     const doc = new jsPDF();
-    const col = ["Conceptos", "precios"];
-    const rows = [];
+    const col = ["Descripción del servicio", "costo (sin IVA)"];
+    const row = [];
+
     const itemNew = quote.detailConcept;
 
     itemNew.forEach((element) => {
       const temp = [element.concepts, `$${element.prices}`];
-      rows.push(temp);
+
+      row.push(temp);
     });
 
     doc.addImage(logo, "PNG", 10, 10, 30, 30);
-    doc.text(`cliente: ${quote.client_name}`, 20, 43);
-    doc.text(quote.client_lastname, 51, 43);
-    doc.text(`administrador: ${quote.quote_admin}`, 20, 51);
-    doc.text(`servicio: ${quote.service}`, 20, 59);
-    doc.text(`fecha: ${quote.start_date}`, 20, 67);
-    doc.text(quote.end_date, 68, 67);
-    doc.text(`días: ${quote.days}`, 20, 75);
-    doc.text(`horas: ${quote.hours}`, 40, 75);
-    doc.autoTable(col, rows, { startY: 95 });
-    doc.text(`total: $${quote.total}`, 20, 85);
+    doc.setFontSize(14);
+    doc.text(`Lugar y Fecha: ${quote.place_date} `, 20, 43);
+    //doc.text(`administrador: ${quote.quote_admin}`, 20, 51);
+    doc.text(`No. Cotización: ${quote.quote_number}`, 20, 51);
+    //doc.text(`servicio: ${quote.service}`, 20, 59);
+    doc.text(`Nombre del cliente y/o Empresa: ${quote.client_name}`, 20, 59);
+    /*doc.text(`fecha: ${quote.start_date}`, 20, 67);
+    doc.text(quote.end_date, 68, 67);*/
+    doc.text(`Linea de Servicio: ${quote.service}`, 20, 67);
+    doc.text(`Fecha de Inicio del Servicio: ${quote.start_date}`, 20, 75);
+    doc.text(`Fecha de Término del Servicio: ${quote.end_date}`, 20, 85);
+    doc.text(`días: ${quote.days}`, 20, 95);
+    doc.text(`horas: ${quote.hours}`, 20, 105);
+    doc.text(`Consultor: ${quote.quote_admin}`, 20, 115);
+    doc.text("Concepto (s):", 20, 125);
+    //doc.autoTable(col, rows, { startY: 125 });
+    doc.autoTable({
+      theme: "grid",
+      headStyles: { fontSize: 13, halign: "center" },
+      bodyStyles: { fontSize: 11, halign: "center", textColor: "000" },
+      //styles: { halign: "center", fontSize: 13, textColor: "000" },
+      head: [col],
+      body: row,
+      startY: 135,
+    });
+    //doc.text(`total: $${quote.total}`, 20, 85);
+
+    doc.text("Quedo a sus órdenes para cualquier duda o aclaración", 35, 200);
+    doc.text("---------------------------------", 68, 240);
+    doc.text("Leonildo Tun Caamal", 72, 250);
+    doc.text("Dirección General", 72, 255);
+    doc.text("Julbe'en Consultores", 72, 260);
+
     doc.save(`cotizacion${quote._id}.pdf`);
   };
   return (

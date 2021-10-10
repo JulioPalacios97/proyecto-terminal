@@ -17,7 +17,6 @@ function Login({ setLogin }) {
 
     try {
       const res = await axios.post("/admin/login", { ...user });
-      //console.log(res.data.accesstoken);
       localStorage.setItem("firstlogin", res.data.accesstoken);
       setLogin(true);
     } catch (err) {

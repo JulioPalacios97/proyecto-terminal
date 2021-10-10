@@ -66,22 +66,22 @@ const consultantCtrl = {
   },
   createConsultant: async (req, res) => {
     try {
-      const { consultant_id, name, image, description } = req.body;
-      if (!image) return res.status(400).json({ msg: "No image upload" });
+      const { name, image, description } = req.body;
+      if (!image)
+        return res.status(400).json({ msg: "No a cargado una imagen" });
 
-      const consultant = await Consultants.findOne({ consultant_id });
+      const consultant = await Consultants.findOne({ name });
       if (consultant)
-        return res.status(400).json({ msg: "This consultant already exists" });
+        return res.status(400).json({ msg: "Este consultor ya existe" });
 
       const newConsultant = new Consultants({
-        consultant_id,
         name: name.toLowerCase(),
         image,
         description,
       });
 
       await newConsultant.save();
-      res.json({ msg: "Created a consultant" });
+      res.json({ msg: "Consultor creado" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -89,7 +89,7 @@ const consultantCtrl = {
   deleteConsultant: async (req, res) => {
     try {
       await Consultants.findByIdAndDelete(req.params.id);
-      res.json({ msg: "Deleted a consultant" });
+      res.json({ msg: "Consultor eliminado" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -97,7 +97,8 @@ const consultantCtrl = {
   updateConsultant: async (req, res) => {
     try {
       const { name, image, description } = req.body;
-      if (!image) return res.status(400).json({ msg: "No image upload" });
+      if (!image)
+        return res.status(400).json({ msg: "No a cargado una imagen" });
 
       await Consultants.findOneAndUpdate(
         { _id: req.params.id },
@@ -108,7 +109,7 @@ const consultantCtrl = {
         }
       );
 
-      res.json({ msg: "Updated a consultant" });
+      res.json({ msg: "Consultor actualizado" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }

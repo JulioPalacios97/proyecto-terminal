@@ -15,7 +15,7 @@ const Clientes = () => {
   return (
     <div>
       <div className="details">
-        <div className="table-services">
+        <div className="table">
           <div className="cardHeader">
             <h2>Clientes Actuales</h2>
           </div>
@@ -23,7 +23,6 @@ const Clientes = () => {
             <thead>
               <tr>
                 <td>cliente</td>
-                <td>apellido</td>
                 <td>servicio</td>
                 <td>correo</td>
                 <td>telefono</td>

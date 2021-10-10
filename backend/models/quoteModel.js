@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 
 const quoteSchema = new mongoose.Schema(
   {
+    place_date: String,
     client_name: String,
-    client_lastname: String,
+    quote_number: String,
     service: String,
     start_date: String,
     end_date: String,

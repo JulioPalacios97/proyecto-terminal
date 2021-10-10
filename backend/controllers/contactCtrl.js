@@ -13,15 +13,14 @@ const contactCtrl = {
   },
   createContact: async (req, res) => {
     try {
-      const { username, lastname, email, phone, service, content } = req.body;
+      const { username, email, phone, service, content } = req.body;
 
       const contact = await Contacts.findOne({ email });
       if (contact)
-        return res.status(400).json({ msg: "This email already exists" });
+        return res.status(400).json({ msg: "Este correo ya existe" });
 
       const newContact = new Contacts({
         username,
-        lastname,
         email,
         phone,
         service,
@@ -33,12 +32,11 @@ const contactCtrl = {
         from: '"Solicitud de cotización" <julpal97@gmail.com>', // sender address
         to: process.env.USER_EMAIL_GMAIL, // list of receivers
         subject: "Solicitud de cotización", // Subject line
-        html: `<p>nombre: ${username}</p>
-          <p>apellido: ${lastname}</p>
-          <p>email: ${email}</p>
-          <p>telefono: ${phone}</p>
-          <p>servicio: ${service}</p>
-          <p>texto: ${content}</p>`, // html body
+        html: `<p>Nombre: ${username}</p>
+          <p>Email: ${email}</p>
+          <p>Telefono: ${phone}</p>
+          <p>Servicio: ${service}</p>
+          <p>Texto: ${content}</p>`, // html body
       });
 
       await newContact.save();
