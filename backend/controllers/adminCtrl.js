@@ -47,10 +47,10 @@ const adminCtrl = {
       if (!isMatch)
         return res.status(400).json({ msg: "Contraseña incorrecta" });
 
-      //if login success, create access tokan
+      //if login success, create access token
       const accesstoken = createAccessToken({ id: admin._id });
 
-      res.json({ accesstoken });
+      res.json({ accesstoken, name: admin.name });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -65,15 +65,12 @@ const adminCtrl = {
         token,
         process.env.ACCESS_TOKEN_SECRET,
         async (err, verified) => {
-          if (err)
-            return res
-              .status(400)
-              .json({ msg: "Por favor inicia sesion o registrate" });
+          if (err) return res.send(false);
 
           const admin = await Admins.findById(verified.id);
           if (!admin) return res.send(false);
 
-          return res.send(true);
+          return res.json({ success: true, name: admin.name });
         }
       );
     } catch (err) {

@@ -36,6 +36,9 @@ body {
 /*style loading*/
 @import url("./components/layout/loading/loading.css");
 
+/*style loadinginicio*/
+@import url("./components/layout/loading/loadingInicio.css");
+
 @media (max-width: 992px) {
   .navigation {
     left: -300px;
@@ -68,10 +71,14 @@ body {
   .cardBox {
     grid-template-columns: repeat(1, 1fr);
   }
-  .details .table-services {
+  .details .cardHeader .search {
+    width: 200px;
+    right: 30px;
+  }
+  .details .table {
     overflow-x: auto;
   }
-  .details .table-services table {
+  .details .table table {
     width: 600px;
   }
   .navigation {
@@ -96,5 +103,21 @@ body {
   .main.active {
     width: 100%;
     left: 0;
+  }
+
+  .create_service form {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .create_service form .service_btn {
+    margin-bottom: 5%;
+  }
+
+  .data_concept_table .content_table {
+    min-width: 310px;
+  }
+  .data_concept_table .save {
+    margin-bottom: 5%;
   }
 }

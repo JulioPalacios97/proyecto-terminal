@@ -27,7 +27,7 @@ function App() {
     <DataProvider>
       <Router>
         {isLogin ? (
-          <Layout setLogin={setLogin} />
+          <Layout setLogin={setLogin} isLogin={isLogin} />
         ) : (
           <Login setLogin={setLogin} />
         )}

@@ -25,7 +25,7 @@ const Administradores = () => {
                 <input
                   type="text"
                   value={search}
-                  placeholder="buscar..."
+                  placeholder="buscar"
                   onChange={(e) => setSearch(e.target.value.toLowerCase())}
                 />
                 <i className="fas fa-search"></i>

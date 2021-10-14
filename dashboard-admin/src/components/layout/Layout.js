@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Sidebar from "./Sidebar";
 
-const Layout = ({ setLogin }) => {
+const Layout = ({ setLogin, isLogin }) => {
   const [sidebarOpen, setSidebarOpne] = useState(false);
 
   const buttonSidebar = () => {
@@ -13,6 +13,7 @@ const Layout = ({ setLogin }) => {
         sidebarOpen={sidebarOpen}
         buttonSidebar={buttonSidebar}
         setLogin={setLogin}
+        isLogin={isLogin}
       />
     </div>
   );

@@ -3,7 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import Pages from "../pages/Pages";
 import Logo from "../img/logo-dashboard.png";
 
-const Sidebar = ({ sidebarOpen, buttonSidebar, setLogin }) => {
+const Sidebar = ({ sidebarOpen, buttonSidebar, setLogin, isLogin }) => {
   const [token, setToken] = useState("");
   const router = useLocation();
 
@@ -114,7 +114,7 @@ const Sidebar = ({ sidebarOpen, buttonSidebar, setLogin }) => {
             <i className="fas">&#xf0c9;</i>
           </div>
 
-          <div className="user">{token ? "Admin" : ""}</div>
+          <div className="user">{token ? `${isLogin.name}` : ""}</div>
         </div>
         <Pages />
       </div>

@@ -27,6 +27,7 @@ function News() {
               <div className="card-body">
                 <h5 className="card-title text-center">noticia 1</h5>
               </div>
+              <div className="card-footer">2 days ago</div>
             </div>
             <div className="card rounded shadow" style={{ width: "18rem" }}>
               <img src={Consultores} className="card-img-top" alt="consultor" />

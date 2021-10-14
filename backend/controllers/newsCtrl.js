@@ -26,16 +26,16 @@ class APIfeatures {
     return this;
   }
 
-  /*sorting() {
-      if (this.queryString.sort) {
-        const sortBy = this.queryString.sort.split(",").join(" ");
-        this.query = this.query.sort(sortBy);
-      } else {
-        this.query = this.query.sort("-createdAt");
-      }
-  
-      return this;
-    }*/
+  sorting() {
+    if (this.queryString.sort) {
+      const sortBy = this.queryString.sort.split(",").join(" ");
+      this.query = this.query.sort(sortBy);
+    } else {
+      this.query = this.query.sort("-createdAt");
+    }
+
+    return this;
+  }
 
   paginating() {
     const page = this.queryString.page * 1 || 1;
@@ -51,6 +51,7 @@ const newsCtrl = {
     try {
       const features = new APIfeatures(News.find(), req.query)
         .filtering()
+        .sorting()
         .paginating();
 
       const news = await features.query;
@@ -66,7 +67,7 @@ const newsCtrl = {
   },
   createNew: async (req, res) => {
     try {
-      const { title, image, content } = req.body;
+      const { title, image, content, date } = req.body;
       if (!image)
         return res.status(400).json({ msg: "No a cargado una imagen" });
 
@@ -77,6 +78,7 @@ const newsCtrl = {
         title: title.toLowerCase(),
         image,
         content,
+        date,
       });
 
       await newNews.save();

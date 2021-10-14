@@ -44,18 +44,18 @@ function QuoteItem({ quote, callback, setCallback, token }) {
     doc.setFontSize(14);
     doc.text(`Lugar y Fecha: ${quote.place_date} `, 20, 43);
     //doc.text(`administrador: ${quote.quote_admin}`, 20, 51);
-    doc.text(`No. Cotización: ${quote.quote_number}`, 20, 51);
+    doc.text(`No. Cotización: ${quote.quote_number}`, 20, 49);
     //doc.text(`servicio: ${quote.service}`, 20, 59);
-    doc.text(`Nombre del cliente y/o Empresa: ${quote.client_name}`, 20, 59);
+    doc.text(`Nombre del cliente y/o Empresa: ${quote.client_name}`, 20, 55);
     /*doc.text(`fecha: ${quote.start_date}`, 20, 67);
     doc.text(quote.end_date, 68, 67);*/
-    doc.text(`Linea de Servicio: ${quote.service}`, 20, 67);
-    doc.text(`Fecha de Inicio del Servicio: ${quote.start_date}`, 20, 75);
-    doc.text(`Fecha de Término del Servicio: ${quote.end_date}`, 20, 85);
-    doc.text(`días: ${quote.days}`, 20, 95);
-    doc.text(`horas: ${quote.hours}`, 20, 105);
-    doc.text(`Consultor: ${quote.quote_admin}`, 20, 115);
-    doc.text("Concepto (s):", 20, 125);
+    doc.text(`Linea de Servicio: ${quote.service}`, 20, 61);
+    doc.text(`Fecha de Inicio del Servicio: ${quote.start_date}`, 20, 67);
+    doc.text(`Fecha de Término del Servicio: ${quote.end_date}`, 20, 73);
+    doc.text(`Días: ${quote.days}`, 20, 79);
+    doc.text(`Horas: ${quote.hours}`, 20, 85);
+    doc.text(`Consultor: ${quote.quote_admin}`, 20, 91);
+    doc.text("Concepto (s):", 20, 99);
     //doc.autoTable(col, rows, { startY: 125 });
     doc.autoTable({
       theme: "grid",
@@ -64,12 +64,13 @@ function QuoteItem({ quote, callback, setCallback, token }) {
       //styles: { halign: "center", fontSize: 13, textColor: "000" },
       head: [col],
       body: row,
-      startY: 135,
+      startY: 107,
     });
     //doc.text(`total: $${quote.total}`, 20, 85);
 
     doc.text("Quedo a sus órdenes para cualquier duda o aclaración", 35, 200);
-    doc.text("---------------------------------", 68, 240);
+    doc.text("---------------------------------", 70, 240);
+    doc.setFont("helvetica", "bold");
     doc.text("Leonildo Tun Caamal", 72, 250);
     doc.text("Dirección General", 72, 255);
     doc.text("Julbe'en Consultores", 72, 260);
