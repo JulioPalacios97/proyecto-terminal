@@ -7,13 +7,16 @@ import { useHistory, useParams } from "react-router-dom";
 const initialState = {
   title: "",
   content: "",
+  category: "",
+  date: "",
   _id: "",
 };
 
-function CreateService() {
+function CreateNew() {
   const state = useContext(GlobalState);
+  const [noticia, setNoticia] = useState(initialState);
 
-  const [service, setService] = useState(initialState);
+  const [sections] = state.sectionsAPI.sections;
 
   const [image, setImage] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -22,24 +25,24 @@ function CreateService() {
   const history = useHistory();
   const param = useParams();
 
-  const [services] = state.servicesAPI.services;
+  const [noticias] = state.newsAPI.news;
   const [onEdit, setOnEdit] = useState(false);
-  const [callback, setCallback] = state.servicesAPI.callback;
+  const [callback, setCallback] = state.newsAPI.callback;
   useEffect(() => {
     if (param.id) {
       setOnEdit(true);
-      services.forEach((service) => {
-        if (service._id === param.id) {
-          setService(service);
-          setImage(service.image);
+      noticias.forEach((noticia) => {
+        if (noticia._id === param.id) {
+          setNoticia(noticia);
+          setImage(noticia.image);
         }
       });
     } else {
       setOnEdit(false);
-      setService(initialState);
+      setNoticia(initialState);
       setImage(false);
     }
-  }, [param.id, services]);
+  }, [param.id, noticias]);
 
   const handleUpload = async (e) => {
     e.preventDefault();
@@ -88,7 +91,7 @@ function CreateService() {
 
   const handleChangeInput = (e) => {
     const { name, value } = e.target;
-    setService({ ...service, [name]: value });
+    setNoticia({ ...noticia, [name]: value });
   };
 
   const handleSubmit = async (e) => {
@@ -98,8 +101,8 @@ function CreateService() {
 
       if (onEdit) {
         const res = await axios.put(
-          `/api/services/${service._id}`,
-          { ...service, image },
+          `/api/news/${noticia._id}`,
+          { ...noticia, image },
           {
             headers: { Authorization: token },
           }
@@ -107,8 +110,8 @@ function CreateService() {
         alert(res.data.msg);
       } else {
         const res = await axios.post(
-          "/api/services",
-          { ...service, image },
+          "/api/news",
+          { ...noticia, image },
           {
             headers: { Authorization: token },
           }
@@ -118,8 +121,8 @@ function CreateService() {
       }
       setCallback(!callback);
       setImage(false);
-      setService(initialState);
-      history.push("/servicios");
+      setNoticia(initialState);
+      history.push("/noticias");
     } catch (err) {
       alert(err.response.data.msg);
     }
@@ -163,7 +166,18 @@ function CreateService() {
             name="title"
             id="title"
             required
-            value={service.title}
+            value={noticia.title}
+            onChange={handleChangeInput}
+          />
+        </div>
+        <div className="row">
+          <label htmlFor="date">Fecha</label>
+          <input
+            type="text"
+            name="date"
+            id="date"
+            required
+            value={noticia.date}
             onChange={handleChangeInput}
           />
         </div>
@@ -175,10 +189,25 @@ function CreateService() {
             name="content"
             id="content"
             required
-            value={service.content}
+            value={noticia.content}
             rows="7"
             onChange={handleChangeInput}
           />
+        </div>
+        <div className="row">
+          <label htmlFor="sections">Categoria: </label>
+          <select
+            name="category"
+            value={noticia.category}
+            onChange={handleChangeInput}
+          >
+            <option value="">Selecciona una categoria</option>
+            {sections.map((section) => (
+              <option value={section.name} key={section._id}>
+                {section.name}
+              </option>
+            ))}
+          </select>
         </div>
         <button className="content_btn" type="submit">
           {onEdit ? "Editar" : "Crear"}
@@ -188,4 +217,4 @@ function CreateService() {
   );
 }
 
-export default CreateService;
+export default CreateNew;

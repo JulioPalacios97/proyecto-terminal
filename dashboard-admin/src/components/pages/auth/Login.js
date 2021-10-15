@@ -31,11 +31,11 @@ function Login({ setLogin }) {
 
   return (
     <section>
-      <div className="login">
+      <div className="formulario">
         <h1>Login</h1>
         <form onSubmit={loginSubmit}>
           <input
-            className="input-login"
+            className="input-form"
             type="email"
             name="email"
             id="email"
@@ -44,47 +44,18 @@ function Login({ setLogin }) {
             required
           />
           <input
-            className="input-login"
+            className="input-form"
             type="password"
             name="password"
             id="password"
             value={user.password}
             onChange={onChangeInput}
           />
-          <button className="login-button" type="submit">
+          <button className="form-button" type="submit">
             Login
           </button>
         </form>
       </div>
-      {/*loading ? (
-        <LoadingInicio />
-      ) : (
-        <div className="login">
-          <h1>Login</h1>
-          <form onSubmit={loginSubmit}>
-            <input
-              className="input-login"
-              type="email"
-              name="email"
-              id="email"
-              value={user.email}
-              onChange={onChangeInput}
-              required
-            />
-            <input
-              className="input-login"
-              type="password"
-              name="password"
-              id="password"
-              value={user.password}
-              onChange={onChangeInput}
-            />
-            <button className="login-button" type="submit">
-              Login
-            </button>
-          </form>
-        </div>
-      )*/}
     </section>
   );
 }

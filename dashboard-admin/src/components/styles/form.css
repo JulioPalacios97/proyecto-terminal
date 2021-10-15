@@ -1,4 +1,4 @@
-.login {
+.formulario {
   width: 300px;
   box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.3);
   background: #fff;
@@ -6,11 +6,11 @@
   margin: 8% auto 0;
   text-align: center;
 }
-.login h1 {
+.formulario h1 {
   color: #1c8adb;
   margin-bottom: 30px;
 }
-.input-login {
+.input-form {
   border-radius: 5px;
   padding: 5px;
   margin: 5px 0;
@@ -19,7 +19,7 @@
   outline: none;
 }
 
-.login .login-button {
+.formulario .form-button {
   color: #fff;
   width: 100%;
   height: 40px;
@@ -30,6 +30,5 @@
   border: none;
   outline: none;
   cursor: pointer;
-
   background-color: #1c8adb;
 }

@@ -133,7 +133,7 @@ function CreateConsultant() {
     setToken(token);
   }, []);
   return (
-    <div className="create_service">
+    <div className="create_content">
       <div className="upload">
         <input
           type="file"
@@ -177,7 +177,7 @@ function CreateConsultant() {
             onChange={handleChangeInput}
           />
         </div>
-        <button className="service_btn" type="submit">
+        <button className="content_btn" type="submit">
           {onEdit ? "Editar" : "Crear"}
         </button>
       </form>

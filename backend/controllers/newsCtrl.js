@@ -67,7 +67,7 @@ const newsCtrl = {
   },
   createNew: async (req, res) => {
     try {
-      const { title, image, content, date } = req.body;
+      const { title, image, content, category, date } = req.body;
       if (!image)
         return res.status(400).json({ msg: "No a cargado una imagen" });
 
@@ -78,6 +78,7 @@ const newsCtrl = {
         title: title.toLowerCase(),
         image,
         content,
+        category,
         date,
       });
 
@@ -97,7 +98,7 @@ const newsCtrl = {
   },
   updateNew: async (req, res) => {
     try {
-      const { title, image, content } = req.body;
+      const { title, image, content, category, date } = req.body;
       if (!image)
         return res.status(400).json({ msg: "No a cargado una imagen" });
 
@@ -107,6 +108,8 @@ const newsCtrl = {
           title: title.toLowerCase(),
           image,
           content,
+          category,
+          date,
         }
       );
       res.json({ msg: "Noticia actualizada" });

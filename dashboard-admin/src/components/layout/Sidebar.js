@@ -62,6 +62,14 @@ const Sidebar = ({ sidebarOpen, buttonSidebar, setLogin, isLogin }) => {
               <span className="title">Servicios</span>
             </Link>
           </li>
+          <li className={isActive("/noticias")}>
+            <Link to="/noticias">
+              <span className="icon">
+                <i className="fas fa-newspaper"></i>
+              </span>
+              <span className="title">Noticias</span>
+            </Link>
+          </li>
           <li className={isActive("/cotizaciones")}>
             <Link to="/cotizaciones">
               <span className="icon">

@@ -28,12 +28,12 @@ function Registro() {
 
   return (
     <section>
-      <div className="login">
+      <div className="formulario">
         <h1>Registro</h1>
         <form onSubmit={RegisterSubmit}>
           <p>Nombre</p>
           <input
-            className="input-login"
+            className="input-form"
             type="text"
             name="name"
             id="name"
@@ -43,7 +43,7 @@ function Registro() {
           />
           <p>Email</p>
           <input
-            className="input-login"
+            className="input-form"
             type="email"
             name="email"
             id="email"
@@ -53,14 +53,14 @@ function Registro() {
           />
           <p>Contraseña</p>
           <input
-            className="input-login"
+            className="input-form"
             type="password"
             name="password"
             id="password"
             value={user.password}
             onChange={onChangeInput}
           />
-          <button className="login-button" type="submit">
+          <button className="form-button" type="submit">
             Registrar
           </button>
         </form>

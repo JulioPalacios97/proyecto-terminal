@@ -2,45 +2,46 @@ import axios from "axios";
 import React from "react";
 import { Link } from "react-router-dom";
 
-function ServiceItem({ service, callback, setCallback, token }) {
-  const deleteService = async () => {
+function NewItem({ noticia, callback, setCallback, token }) {
+  const deleteNoticia = async () => {
     try {
       const destroyImg = axios.post(
         "/api/destroy",
-        { public_id: service.image.public_id },
+        { public_id: noticia.image.public_id },
         {
           headers: { Authorization: token },
         }
       );
-      const deleteService = axios.delete(`/api/services/${service._id}`, {
+      const deleteNoticia = axios.delete(`/api/news/${noticia._id}`, {
         headers: { Authorization: token },
       });
 
       setCallback(!callback);
       await destroyImg;
-      await deleteService;
+      await deleteNoticia;
     } catch (err) {
       alert(err.response.data.msg);
     }
   };
-
   return (
     <>
       <tbody>
         <tr>
           <td>
             <img
-              src={service.image.url}
-              alt={service.image.url}
+              src={noticia.image.url}
+              alt={noticia.image.url}
               style={{ width: "50px", height: "50px" }}
             />
           </td>
-          <td style={{ textTransform: "uppercase" }}>{service.title}</td>
+          <td style={{ textTransform: "uppercase" }}>{noticia.title}</td>
+          <td>{noticia.date}</td>
+          <td>{noticia.category}</td>
           <td>
             <button className="edit">
               <Link
                 style={{ textDecoration: "none", color: "white" }}
-                to={`/editar_servicio/${service._id}`}
+                to={`/editar_noticia/${noticia._id}`}
               >
                 <i className="fas fa-edit"></i>
               </Link>
@@ -49,7 +50,7 @@ function ServiceItem({ service, callback, setCallback, token }) {
               style={{ cursor: "pointer" }}
               className="delete"
               onClick={() =>
-                deleteService(service._id, service.image.public_id)
+                deleteNoticia(noticia._id, noticia.image.public_id)
               }
             >
               <i className="fas fa-trash-alt"></i>
@@ -61,4 +62,4 @@ function ServiceItem({ service, callback, setCallback, token }) {
   );
 }
 
-export default ServiceItem;
+export default NewItem;

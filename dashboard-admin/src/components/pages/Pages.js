@@ -10,6 +10,8 @@ import CrearCotizaciones from "./createQuote/CreateQuote";
 import Consultores from "./Consultores";
 import CrearConsultores from "./createConsultant/CreateConsultant";
 import Registro from "./Registro";
+import Noticias from "./Noticias";
+import CrearNoticias from "./createNew/CreateNew";
 import Notfound from "./Notfound";
 
 function Pages() {
@@ -32,6 +34,9 @@ function Pages() {
         />
         <Route path="/crear_consultor" exact component={CrearConsultores} />
         <Route path="/registro" exact component={Registro} />
+        <Route path="/noticias" exact component={Noticias} />
+        <Route path="/editar_noticia/:id" exact component={CrearNoticias} />
+        <Route path="/crear_noticia" exact component={CrearNoticias} />
         <Route path="*" exact component={Notfound} />
       </Switch>
     </div>
