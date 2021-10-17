@@ -18,15 +18,6 @@ function QuoteItem({ quote, callback, setCallback, token }) {
     }
   };
 
-  /*const dataConcepts = () =>
-    quote.detailConcept.map((quot) => {
-      return (
-        <li id="data-html">
-          {quot.concepts}, ${quot.prices}
-        </li>
-      );
-    });*/
-
   const pdfGenerate = () => {
     const doc = new jsPDF();
     const col = ["Descripción del servicio", "costo (sin IVA)"];
@@ -42,39 +33,73 @@ function QuoteItem({ quote, callback, setCallback, token }) {
 
     doc.addImage(logo, "PNG", 10, 10, 30, 30);
     doc.setFontSize(14);
-    doc.text(`Lugar y Fecha: ${quote.place_date} `, 20, 43);
-    //doc.text(`administrador: ${quote.quote_admin}`, 20, 51);
-    doc.text(`No. Cotización: ${quote.quote_number}`, 20, 49);
-    //doc.text(`servicio: ${quote.service}`, 20, 59);
-    doc.text(`Nombre del cliente y/o Empresa: ${quote.client_name}`, 20, 55);
-    /*doc.text(`fecha: ${quote.start_date}`, 20, 67);
-    doc.text(quote.end_date, 68, 67);*/
-    doc.text(`Linea de Servicio: ${quote.service}`, 20, 61);
-    doc.text(`Fecha de Inicio del Servicio: ${quote.start_date}`, 20, 67);
-    doc.text(`Fecha de Término del Servicio: ${quote.end_date}`, 20, 73);
-    doc.text(`Días: ${quote.days}`, 20, 79);
-    doc.text(`Horas: ${quote.hours}`, 20, 85);
-    doc.text(`Consultor: ${quote.quote_admin}`, 20, 91);
+    /*Lugar y fecha*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Lugar y Fecha: `, 20, 43);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.place_date, 57, 43);
+    /*numero de cotizacion*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`No. Cotización: `, 20, 49);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.quote_number, 58, 49);
+    /*nombre del cliente*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Nombre del cliente y/o Empresa: `, 20, 55);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.client_name, 99, 55);
+    /*linea de servicio*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Linea de Servicio: `, 20, 61);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.service, 64, 61);
+    /*fecha de inicio*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Fecha de Inicio del Servicio: `, 20, 67);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.start_date, 89, 67);
+    /*fecha de termino*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Fecha de Término del Servicio: `, 20, 73);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.end_date, 95, 73);
+    /*dias*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Días:  `, 20, 79);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.days, 34, 79);
+    /*horas*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Horas: `, 20, 85);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.hours, 37, 85);
+    /*consultor*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Consultor: `, 20, 91);
+    doc.setFont("helvetica", "normal");
+    doc.text(quote.quote_admin, 47, 91);
+    /*concepto(s)*/
+    doc.setFont("helvetica", "bold");
     doc.text("Concepto (s):", 20, 99);
-    //doc.autoTable(col, rows, { startY: 125 });
+    doc.text(`Subtotal: $${quote.subtotal}`, 156, 107);
+    doc.text(`Total + IVA (16%): $${quote.total}`, 135, 115);
     doc.autoTable({
       theme: "grid",
       headStyles: { fontSize: 13, halign: "center" },
       bodyStyles: { fontSize: 11, halign: "center", textColor: "000" },
-      //styles: { halign: "center", fontSize: 13, textColor: "000" },
       head: [col],
       body: row,
-      startY: 107,
+      startY: 123,
     });
-    //doc.text(`total: $${quote.total}`, 20, 85);
-
-    doc.text("Quedo a sus órdenes para cualquier duda o aclaración", 35, 200);
-    doc.text("---------------------------------", 70, 240);
+    /*dudas y aclaraciones*/
+    doc.setFont("helvetica", "normal");
+    doc.text("Quedo a sus órdenes para cualquier duda o aclaración", 42, 200);
+    /*firma*/
     doc.setFont("helvetica", "bold");
-    doc.text("Leonildo Tun Caamal", 72, 250);
-    doc.text("Dirección General", 72, 255);
-    doc.text("Julbe'en Consultores", 72, 260);
-
+    doc.text("---------------------------------", 80, 240);
+    doc.text("Leonildo Tun Caamal", 82, 250);
+    doc.text("Dirección General", 85, 255);
+    doc.text("Julbe'en Consultores", 81, 260);
     doc.save(`cotizacion${quote._id}.pdf`);
   };
   return (

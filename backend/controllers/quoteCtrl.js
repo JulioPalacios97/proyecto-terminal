@@ -76,9 +76,8 @@ const quoteCtrl = {
         days,
         hours,
         detailConcept,
+        subtotal,
         total,
-        organization_size,
-        level_difficulty,
       } = req.body;
 
       const newQuote = new Quotes({
@@ -92,9 +91,8 @@ const quoteCtrl = {
         days,
         hours,
         detailConcept,
+        subtotal,
         total,
-        organization_size,
-        level_difficulty,
       });
 
       await newQuote.save();

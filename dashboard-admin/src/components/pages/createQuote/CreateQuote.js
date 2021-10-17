@@ -19,11 +19,10 @@ function CreateQuote() {
     hours: "",
     concept: "",
     price: "",
-    organization_size: "",
-    level_difficulty: "",
   });
   const [token, setToken] = useState("");
   const history = useHistory();
+  const [subtotal, setSubTotal] = useState(0);
   const [total, setTotal] = useState(0);
   const [detailConcept, setDetailConcept] = useState([]);
   const [callback, setCallback] = state.quotesAPI.callback;
@@ -41,24 +40,26 @@ function CreateQuote() {
       prices: data.price,
     };
 
-    const num = total + parseInt(addData.prices);
+    const num = subtotal + parseInt(addData.prices);
+    const total = num * 1.16;
 
     const newAddData = [...detailConcept, addData];
 
     setDetailConcept(newAddData);
-    setTotal(num);
+    setSubTotal(num);
+    setTotal(Math.round(total));
   };
 
   const deletConcept = (index) => {
     const price = data.price;
 
-    const num = total - parseInt(price);
+    const num = subtotal - parseInt(price);
 
     const concept = [...detailConcept];
     concept.splice(index, 1);
 
     setDetailConcept(concept);
-    setTotal(num);
+    setSubTotal(num);
   };
 
   const guardarDatos = async (e) => {
@@ -66,6 +67,7 @@ function CreateQuote() {
     try {
       const dataSave = {
         detailConcept: detailConcept,
+        subtotal: subtotal,
         total: total,
         place_date: data.place_date,
         client_name: data.client_name,
@@ -76,8 +78,6 @@ function CreateQuote() {
         quote_admin: data.quote_admin,
         days: data.days,
         hours: data.hours,
-        organization_size: data.organization_size,
-        level_difficulty: data.level_difficulty,
       };
 
       await axios.post("/api/quote", dataSave, {
@@ -204,28 +204,6 @@ function CreateQuote() {
               required
             />
           </div>
-          <div className="col-6">
-            <label htmlFor="organization_size">Tamaño de la empresa</label>
-            <input
-              type="text"
-              name="organization_size"
-              id="organization_size"
-              value={data.organization_size}
-              onChange={onChangeInput}
-              required
-            />
-          </div>
-          <div className="col-6">
-            <label htmlFor="level_difficulty">Nivel de dificultad</label>
-            <input
-              type="text"
-              name="level_difficulty"
-              id="level_difficulty"
-              value={data.level_difficulty}
-              onChange={onChangeInput}
-              required
-            />
-          </div>
           <div className="col-6"></div>
         </div>
         {/*Table concept*/}
@@ -280,6 +258,9 @@ function CreateQuote() {
               ))}
               <thead>
                 <tr>
+                  <td>
+                    SubTotal: $<span>{subtotal}</span>
+                  </td>
                   <td>
                     Total: $<span>{total}</span>
                   </td>

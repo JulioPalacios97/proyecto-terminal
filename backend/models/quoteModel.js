@@ -15,9 +15,8 @@ const quoteSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    subtotal: Number,
     total: Number,
-    organization_size: String,
-    level_difficulty: String,
   },
   {
     timestamps: true,
