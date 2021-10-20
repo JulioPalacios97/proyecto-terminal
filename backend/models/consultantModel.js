@@ -2,12 +2,6 @@ const mongoose = require("mongoose");
 
 const consultantSchema = new mongoose.Schema(
   {
-    consultant_id: {
-      type: String,
-      unique: true,
-      required: true,
-      trim: true,
-    },
     name: {
       type: String,
       required: true,

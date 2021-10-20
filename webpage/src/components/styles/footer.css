@@ -1,0 +1,17 @@
+.footer-section {
+  background: #92d050;
+  position: relative;
+}
+
+.logo-footer {
+  width: 150px;
+}
+
+.cta-text h5 {
+  color: white;
+}
+
+.footer-social-icon i {
+  color: white;
+  font-size: 20px;
+}

@@ -1,7 +1,6 @@
 const router = require("express").Router();
 const serviceCtrl = require("../controllers/serviceCtrl");
 const auth = require("../middleware/auth");
-//const authAdmin = require("../middleware/authAdmin");
 
 router
   .route("/services")

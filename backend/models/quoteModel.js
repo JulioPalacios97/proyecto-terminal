@@ -2,8 +2,9 @@ const mongoose = require("mongoose");
 
 const quoteSchema = new mongoose.Schema(
   {
-    user: String,
-    type_project: String,
+    place_date: String,
+    client_name: String,
+    quote_number: String,
     service: String,
     start_date: String,
     end_date: String,
@@ -14,13 +15,8 @@ const quoteSchema = new mongoose.Schema(
       type: Array,
       default: [],
     },
+    subtotal: Number,
     total: Number,
-    people_involves: {
-      type: Array,
-      default: [],
-    },
-    organization_size: String,
-    level_difficulty: String,
   },
   {
     timestamps: true,

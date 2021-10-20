@@ -2,12 +2,7 @@ const mongoose = require("mongoose");
 
 const contactSchema = new mongoose.Schema(
   {
-    name: {
-      type: String,
-      required: true,
-      trim: true,
-    },
-    lastname: {
+    username: {
       type: String,
       required: true,
       trim: true,
@@ -23,10 +18,14 @@ const contactSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
-    text: {
+    content: {
       type: String,
       required: true,
       trim: true,
+    },
+    status: {
+      type: String,
+      default: "nuevo",
     },
   },
   {

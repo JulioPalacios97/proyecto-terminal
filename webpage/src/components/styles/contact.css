@@ -1,0 +1,37 @@
+.contenedor {
+  padding: 1.5rem 1rem;
+  max-width: 1280px;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.text-aqua {
+  color: #00c6d6 !important;
+}
+
+input {
+  background: #e5e5e5 !important;
+}
+textarea {
+  background: #e5e5e5 !important;
+}
+
+select {
+  background: #e5e5e5 !important;
+}
+
+#directorio {
+  -webkit-box-shadow: inset 0 5px 23px -4px rgba(65, 65, 65, 0.69);
+  -moz-box-shadow: inset 0 5px 23px -4px rgba(65, 65, 65, 0.69);
+  box-shadow: inset 0 5px 23px -4px rgba(65, 65, 65, 0.69);
+}
+
+.bg-aqua-deg {
+  /*background-image: linear-gradient(
+    to right,
+    #35c6f4 0%,
+    #00c6d6 82%,
+    #00c6d6 100%
+  );*/
+  background: #35c6f4;
+}

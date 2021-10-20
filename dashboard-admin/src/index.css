@@ -1,0 +1,120 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700;800;900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+/*style sidebar*/
+@import url("./components/styles/sidebar.css");
+
+/*style dashboard*/
+@import url("./components/styles/table.css");
+
+/*style section*/
+@import url("./components/styles/section.css");
+
+/*style login*/
+@import url("./components/styles/form.css");
+
+/*style create service*/
+@import url("./components/styles/createContent.css");
+
+/*style create quote*/
+@import url("./components/styles/createQuote.css");
+
+/*style loading*/
+@import url("./components/layout/loading/loading.css");
+
+@media (max-width: 992px) {
+  .navigation {
+    left: -300px;
+  }
+  .navigation.active {
+    left: 0;
+    width: 300px;
+  }
+  .main {
+    width: 100%;
+    left: 0;
+  }
+  .main.active {
+    width: calc(100% - 300px);
+    left: 300px;
+  }
+  .cardBox {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 758px) {
+  .cardHeader h2 {
+    font-weight: 600;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .cardBox {
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .details .cardHeader .search {
+    width: 200px;
+    right: 30px;
+  }
+  .details .table {
+    overflow-x: auto;
+  }
+  .details .table table {
+    width: 600px;
+  }
+  .navigation {
+    width: 100%;
+    left: -100%;
+    z-index: 1000;
+  }
+  .navigation.active {
+    width: 100%;
+    left: 0;
+  }
+  .toggle.active {
+    position: fixed;
+    z-index: 10000;
+    right: 0;
+    left: initial;
+  }
+  .toggle.active .fas {
+    color: #fff;
+  }
+  .main,
+  .main.active {
+    width: 100%;
+    left: 0;
+  }
+
+  .create_content form {
+    max-width: 320px;
+    width: 100%;
+  }
+
+  .create_content form .content_btn {
+    margin-bottom: 5%;
+  }
+
+  .data_concept_table .content_table {
+    min-width: 310px;
+  }
+  .data_concept_table .save {
+    margin-bottom: 5%;
+  }
+}
