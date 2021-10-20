@@ -23,7 +23,7 @@ const Clientes = () => {
             <thead>
               <tr>
                 <td>cliente</td>
-                <td>servicio</td>
+                <td>status</td>
                 <td>correo</td>
                 <td>telefono</td>
                 <td>opciones</td>

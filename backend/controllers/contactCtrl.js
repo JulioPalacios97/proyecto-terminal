@@ -54,6 +54,17 @@ const contactCtrl = {
       return res.status(500).json({ msg: err.message });
     }
   },
+  updateContact: async (req, res) => {
+    try {
+      const { status } = req.body;
+
+      await Contacts.findOneAndUpdate({ _id: req.params.id }, { status });
+
+      res.json({ msg: "Contacto actualizado" });
+    } catch (err) {
+      return res.status(500).json({ msg: err.message });
+    }
+  },
 };
 
 module.exports = contactCtrl;
