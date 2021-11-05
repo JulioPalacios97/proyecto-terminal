@@ -81,8 +81,8 @@ function QuoteItem({ quote, callback, setCallback, token }) {
     /*concepto(s)*/
     doc.setFont("helvetica", "bold");
     doc.text("Concepto (s):", 20, 99);
-    doc.text(`Subtotal: $${quote.subtotal}`, 156, 107);
-    doc.text(`Total + IVA (16%): $${quote.total}`, 135, 115);
+    doc.text(`Subtotal: $${quote.subtotal.toLocaleString()}`, 156, 107);
+    doc.text(`Total + IVA (16%): $${quote.total.toLocaleString()}`, 135, 115);
     doc.autoTable({
       theme: "grid",
       headStyles: { fontSize: 13, halign: "center" },
