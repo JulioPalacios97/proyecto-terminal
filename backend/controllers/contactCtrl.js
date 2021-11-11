@@ -29,7 +29,7 @@ const contactCtrl = {
 
       //senEmail
       await transporter.sendMail({
-        from: '"Solicitud de cotización" <julpal97@gmail.com>', // sender address
+        from: '"Solicitud de cotización" <julbeenconsultores@gmail.com>', // sender address
         to: process.env.USER_EMAIL_GMAIL, // list of receivers
         subject: "Solicitud de cotización", // Subject line
         html: `<p>Nombre: ${username}</p>
