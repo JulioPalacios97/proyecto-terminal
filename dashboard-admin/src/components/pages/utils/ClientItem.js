@@ -25,7 +25,8 @@ function ClientItem({ client, callback, setCallback, token }) {
               fontWeight: "bold",
               color:
                 (client.status === "nuevo" && "red") ||
-                (client.status === "atendido" && "#1acf02"),
+                (client.status === "atendido" && "#1acf02") ||
+                (client.status === "en proceso" && "#f9d50a"),
             }}
           >
             {client.status}

@@ -43,7 +43,7 @@ function Noticias() {
                 <td>imagen</td>
                 <td>noticia</td>
                 <td>fecha</td>
-                <td>categoria</td>
+                <td>categoría</td>
                 <td>opciones</td>
               </tr>
             </thead>

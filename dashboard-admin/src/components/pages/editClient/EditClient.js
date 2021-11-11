@@ -4,6 +4,11 @@ import { useHistory, useParams } from "react-router-dom";
 import axios from "axios";
 
 const initialState = {
+  username: "",
+  email: "",
+  phone: "",
+  service: "",
+  content: "",
   status: "",
 };
 
@@ -62,19 +67,85 @@ function EditClient() {
     setToken(token);
   }, []);
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        name="status"
-        id="status"
-        required
-        value={client.status}
-        onChange={handleChangeInput}
-      />
-      <button className="content_btn" type="submit">
-        {onEdit ? "Editar" : ""}
-      </button>
-    </form>
+    <div className="create_content">
+      <form onSubmit={handleSubmit}>
+        <div className="row">
+          <label htmlFor="username">Nombre del cliente</label>
+          <input
+            type="text"
+            name="username"
+            id="username"
+            value={client.username}
+            disabled
+          />
+        </div>
+        <div className="row">
+          <label htmlFor="email">Email</label>
+          <input
+            type="text"
+            name="email"
+            id="email"
+            value={client.email}
+            disabled
+          />
+        </div>
+        <div className="row">
+          <label htmlFor="phone">Telefono</label>
+          <input
+            type="text"
+            name="phone"
+            id="phone"
+            value={client.phone}
+            disabled
+          />
+        </div>
+        <div className="row">
+          <label htmlFor="service">Línea de servicio</label>
+          <input
+            type="text"
+            name="service"
+            id="service"
+            value={client.service}
+            disabled
+          />
+        </div>
+        <div className="row">
+          <label htmlFor="status">Status</label>
+          <select
+            name="status"
+            required
+            value={client.status}
+            onChange={handleChangeInput}
+          >
+            <option value="">Selecciona el status</option>
+            <option value="en proceso">en proceso</option>
+            <option value="atendido">atendido</option>
+          </select>
+          {/*<input
+            type="text"
+            name="status"
+            id="status"
+            required
+            value={client.status}
+            onChange={handleChangeInput}
+          />*/}
+        </div>
+        <div className="row">
+          <label htmlFor="content">Mensaje</label>
+          <textarea
+            type="text"
+            name="content"
+            id="content"
+            value={client.content}
+            rows="4"
+            disabled
+          />
+        </div>
+        <button className="content_btn" type="submit">
+          {onEdit ? "Editar" : ""}
+        </button>
+      </form>
+    </div>
   );
 }
 

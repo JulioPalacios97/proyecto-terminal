@@ -25,7 +25,7 @@ const Clientes = () => {
                 <td>cliente</td>
                 <td>status</td>
                 <td>correo</td>
-                <td>telefono</td>
+                <td>teléfono</td>
                 <td>opciones</td>
               </tr>
             </thead>

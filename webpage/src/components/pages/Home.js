@@ -1,5 +1,5 @@
 import React from "react";
-import Servicios from "../images/servicios-inicio.jpg";
+import Servicios from "../images/servicios-inicio.webp";
 import Noticias from "../images/noticias-inicio.jpg";
 import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
@@ -32,7 +32,9 @@ function Home() {
           <div className="container">
             <div className="row">
               <div className="col-md-6">
-                <img src={Servicios} alt="image1" width="490" />
+                <picture>
+                  <img src={Servicios} alt="image1" width="490" />
+                </picture>
               </div>
               <div className="col-md-6 text-center">
                 <h1 className="heading-1">nuestros servicios</h1>
