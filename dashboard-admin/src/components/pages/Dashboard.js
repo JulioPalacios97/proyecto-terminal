@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
 import { GlobalState } from "../../GlobalState";
-//import moment from "moment";
 import { Bar } from "react-chartjs-2";
 
 const Dashboard = () => {
@@ -35,9 +34,7 @@ const Dashboard = () => {
       const data = [];
       res.forEach(
         (element) => {
-          labels.push(
-            /*moment(element.createdAt).format("L")*/ element.service
-          );
+          labels.push(element.service);
           data.push(element.total);
         },
         setDate(labels),
@@ -47,26 +44,6 @@ const Dashboard = () => {
 
     datosGraficar();
   }, [quote]);
-
-  /*const data = {
-    labels: services,
-    datasets: [
-      {
-        label: "Servicios",
-        backgroundColor: "rgba(0,255,0,1)",
-        borderColor: "black",
-        borderWidth: 1,
-        hoverBackgroundColor: "rgba(0,255,0,0.2)",
-        hoverBorderColor: "#FFF000",
-        data: clientes,
-      },
-    ],
-  };
-
-  const options = {
-    maintainAspectRatio: false,
-    responsive: true,
-  };*/
 
   return (
     <>

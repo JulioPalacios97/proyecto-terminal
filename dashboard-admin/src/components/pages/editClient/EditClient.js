@@ -121,14 +121,6 @@ function EditClient() {
             <option value="en proceso">en proceso</option>
             <option value="atendido">atendido</option>
           </select>
-          {/*<input
-            type="text"
-            name="status"
-            id="status"
-            required
-            value={client.status}
-            onChange={handleChangeInput}
-          />*/}
         </div>
         <div className="row">
           <label htmlFor="content">Mensaje</label>

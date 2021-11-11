@@ -38,49 +38,54 @@ function QuoteItem({ quote, callback, setCallback, token }) {
     doc.text(`Lugar y Fecha: `, 20, 43);
     doc.setFont("helvetica", "normal");
     doc.text(quote.place_date, 57, 43);
+    /*Valido por*/
+    doc.setFont("helvetica", "bold");
+    doc.text(`Valido Por: `, 20, 49);
+    doc.setFont("helvetica", "normal");
+    doc.text("30 días", 48, 49);
     /*numero de cotizacion*/
     doc.setFont("helvetica", "bold");
-    doc.text(`No. Cotización: `, 20, 49);
+    doc.text(`No. Cotización: `, 20, 55);
     doc.setFont("helvetica", "normal");
-    doc.text(quote.quote_number, 58, 49);
+    doc.text(quote.quote_number, 58, 55);
     /*nombre del cliente*/
     doc.setFont("helvetica", "bold");
-    doc.text(`Nombre del cliente y/o Empresa: `, 20, 55);
+    doc.text(`Nombre del cliente y/o Empresa: `, 20, 61);
     doc.setFont("helvetica", "normal");
-    doc.text(quote.client_name, 99, 55);
+    doc.text(quote.client_name, 99, 61);
     /*linea de servicio*/
     doc.setFont("helvetica", "bold");
-    doc.text(`Linea de Servicio: `, 20, 61);
+    doc.text(`Linea de Servicio: `, 20, 67);
     doc.setFont("helvetica", "normal");
-    doc.text(quote.service, 64, 61);
+    doc.text(quote.service, 64, 67);
     /*fecha de inicio*/
     doc.setFont("helvetica", "bold");
-    doc.text(`Fecha de Inicio del Servicio: `, 20, 67);
+    doc.text(`Fecha de Inicio del Servicio: `, 20, 73);
     doc.setFont("helvetica", "normal");
-    doc.text(quote.start_date, 89, 67);
+    doc.text(quote.start_date, 89, 73);
     /*fecha de termino*/
     doc.setFont("helvetica", "bold");
-    doc.text(`Fecha de Término del Servicio: `, 20, 73);
+    doc.text(`Fecha de Término del Servicio: `, 20, 79);
     doc.setFont("helvetica", "normal");
-    doc.text(quote.end_date, 95, 73);
+    doc.text(quote.end_date, 95, 79);
     /*dias*/
     doc.setFont("helvetica", "bold");
-    doc.text(`Días:  `, 20, 79);
+    doc.text(`Días:  `, 20, 85);
     doc.setFont("helvetica", "normal");
-    doc.text(quote.days, 34, 79);
+    doc.text(quote.days, 34, 85);
     /*horas*/
     doc.setFont("helvetica", "bold");
-    doc.text(`Horas: `, 20, 85);
+    doc.text(`Horas: `, 20, 91);
     doc.setFont("helvetica", "normal");
-    doc.text(quote.hours, 37, 85);
+    doc.text(quote.hours, 37, 91);
     /*consultor*/
     doc.setFont("helvetica", "bold");
-    doc.text(`Consultor: `, 20, 91);
+    doc.text(`Consultor: `, 20, 97);
     doc.setFont("helvetica", "normal");
-    doc.text(quote.quote_admin, 47, 91);
+    doc.text(quote.quote_admin, 47, 97);
     /*concepto(s)*/
     doc.setFont("helvetica", "bold");
-    doc.text("Concepto (s):", 20, 99);
+    doc.text("Concepto (s):", 20, 105);
     doc.text(`Subtotal: $${quote.subtotal.toLocaleString()}`, 156, 107);
     doc.text(`Total + IVA (16%): $${quote.total.toLocaleString()}`, 135, 115);
     doc.autoTable({
