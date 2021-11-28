@@ -16,12 +16,12 @@ const sectionCtrl = {
       const { name } = req.body;
       const section = await Section.findOne({ name });
       if (section)
-        return res.status(400).json({ msg: "This section already exists." });
+        return res.status(400).json({ msg: "Esta sección ya existe." });
 
       const newSection = new Section({ name });
 
       await newSection.save();
-      res.json({ msg: "Created a section" });
+      res.json({ msg: "Sección creada" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -29,7 +29,7 @@ const sectionCtrl = {
   deleteSection: async (req, res) => {
     try {
       await Section.findByIdAndDelete(req.params.id);
-      res.json({ msg: "Deleted a Section" });
+      res.json({ msg: "Sección eliminada" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
@@ -39,7 +39,7 @@ const sectionCtrl = {
       const { name } = req.body;
       await Section.findOneAndUpdate({ _id: req.params.id }, { name });
 
-      res.json({ msg: "Updated a section" });
+      res.json({ msg: "Sección actualizada" });
     } catch (err) {
       return res.status(500).json({ msg: err.message });
     }
