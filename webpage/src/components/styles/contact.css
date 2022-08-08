@@ -6,7 +6,8 @@
 }
 
 .text-aqua {
-  color: #00c6d6 !important;
+  /*color: #00c6d6 !important;*/
+  color: #1d4f91 !important;
 }
 
 input {
@@ -33,5 +34,6 @@ select {
     #00c6d6 82%,
     #00c6d6 100%
   );*/
-  background: #35c6f4;
+  /*background: #35c6f4;*/
+  background: #1d4f91;
 }

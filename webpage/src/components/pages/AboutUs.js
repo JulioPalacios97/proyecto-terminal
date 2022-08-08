@@ -68,23 +68,24 @@ function AboutUs() {
           <div className="row">
             <div className="col-md-6">
               <p className="paragraph1">
-                <b>Sinergía empática:</b> Valoramos las diferencias bajo un
-                marco de inclusión y respeto.
+                <b>Integridad inquebrantable:</b> Siempre tenemos el valor de
+                hacer lo correcto.
                 <br />
                 <b>Fiabilidad de desempeño:</b> Aceptamos los retos, somos un
                 equipo multidisciplinario que cumplimos nuestros compromisos en
                 tiempo y forma.
                 <br />
-                <b>Integridad inquebrantable:</b> Siempre tenemos el valor de
-                hacer lo correcto.
-              </p>
-            </div>
-            <div className="col-md-6">
-              <p className="paragraph1">
                 <b>Congruencia sostenible:</b> Creemos en la construcción de
                 negocios responsables y actuamos en concordancia para la
                 concepción de realidades diferentes en lo económico, social y
                 ambiental.
+                <br />
+              </p>
+            </div>
+            <div className="col-md-6">
+              <p className="paragraph1">
+                <b>Sinergía empática:</b> Valoramos las diferencias bajo un
+                marco de inclusión y respeto.
                 <br />
                 <b>Innovación creativa:</b> Creamos soluciones de valor para
                 transformar procesos e ideas.
