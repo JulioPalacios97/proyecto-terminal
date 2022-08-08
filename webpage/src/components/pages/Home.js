@@ -21,7 +21,8 @@ function Home() {
               <div className="d-flex flex-column">
                 <h1 className="site-title">julbe'en consultores</h1>
                 <p className="site-desc">
-                  inspiramos la evolución de las organizaciones
+                  Inspiramos la evolución sostenible y sostenida de las
+                  organizaciones.
                 </p>
               </div>
             </div>
@@ -66,11 +67,9 @@ function Home() {
               <div className="col-md-6 text-center">
                 <h1 className="heading-1">¿quiénes somos?</h1>
                 <p className="paragraph-1">
-                  Somos una empresa de consultores profesionales con experiencia
-                  en diversos ámbitos y sectores, cuyo objetivo es generar valor
-                  en nuestros clientes que les permita mantener la
-                  sostenibilidad a largo plazo, teniendo un impacto positivo en
-                  el entorno.
+                  Somos una empresa de consultores con experiencia en distintos
+                  sectores y áreas dedicados a generar valor sostenible en sus
+                  clientes para que impacten positivamente sus entornos.
                 </p>
                 <Link
                   to="/sobre-nosotros"
