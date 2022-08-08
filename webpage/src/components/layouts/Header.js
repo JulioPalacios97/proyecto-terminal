@@ -1,6 +1,7 @@
 import React from "react";
 import { Link, useLocation } from "react-router-dom";
-import Logo from "../images/logo.png";
+//import Logo from "../images/logo.png";
+import Logo from "../images/logo.webp";
 
 const Header = () => {
   const router = useLocation();
@@ -35,29 +36,53 @@ const Header = () => {
         <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav m-auto">
             <li className={"nav-item" + isActive("/")}>
-              <Link className="nav-link" to="/">
+              <Link
+                className="nav-link"
+                to="/"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
                 Inicio
               </Link>
             </li>
             <li className={"nav-item" + isActive("/sobre-nosotros")}>
-              <Link className="nav-link" to="/sobre-nosotros">
+              <Link
+                className="nav-link"
+                to="/sobre-nosotros"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
                 Sobre Nosotros
               </Link>
             </li>
             <li className={"nav-item" + isActive("/servicios")}>
-              <Link className="nav-link" to="/servicios">
+              <Link
+                className="nav-link"
+                to="/servicios"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
                 Servicios
               </Link>
             </li>
             <li className={"nav-item" + isActive("/noticias")}>
-              <Link className="nav-link" to="/noticias">
+              <Link
+                className="nav-link"
+                to="/noticias"
+                data-toggle="collapse"
+                data-target=".navbar-collapse.show"
+              >
                 Noticias
               </Link>
             </li>
           </ul>
-          <ul className="navbar-nav">
-            <Link to="/contacto">
-              <button className="btn btn-blue" type="button">
+          <ul className="navbar-button">
+            <Link
+              to="/contacto"
+              data-toggle="collapse"
+              data-target=".navbar-collapse.show"
+            >
+              <button className=" btn-blue" type="button">
                 Contacto
               </button>
             </Link>
